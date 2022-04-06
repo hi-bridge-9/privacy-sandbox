@@ -45,7 +45,7 @@ var topPage = `
 </html>
 `
 
-func mediaHandler(w http.ResponseWriter, r *http.Request) {
+func Handler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "GET" {
 		log.Printf("Invalid request method: %v\n", r.Method)
 		w.WriteHeader(http.StatusMethodNotAllowed)

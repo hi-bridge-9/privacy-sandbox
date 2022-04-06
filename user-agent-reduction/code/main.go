@@ -9,7 +9,7 @@ import (
 
 var (
 	handlerFuncMap = map[string]func(w http.ResponseWriter, r *http.Request){
-		"/media": mediaHandler,
+		// "/media": media.Handler,
 		// "/ad_tech": adHandler,
 	}
 )
@@ -19,5 +19,4 @@ func main() {
 	if err := s.Start("80"); err != nil {
 		log.Fatal(err)
 	}
-
 }
