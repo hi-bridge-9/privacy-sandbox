@@ -1,4 +1,4 @@
-package main
+package ad_tech
 
 import (
 	"log"

@@ -4,12 +4,13 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/hi-bridge-9/privacy-sandbox/user-agent-reduction/code/media"
 	"github.com/hi-bridge-9/privacy-sandbox/util"
 )
 
 var (
 	handlerFuncMap = map[string]func(w http.ResponseWriter, r *http.Request){
-		// "/media": media.Handler,
+		"/media": media.Handler,
 		// "/ad_tech": adHandler,
 	}
 )
