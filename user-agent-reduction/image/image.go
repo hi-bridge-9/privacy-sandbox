@@ -18,7 +18,8 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	img, err := readFile("pop_wadai_sns.png")
+	// main.goから見た画像のパス
+	img, err := readFile("./image/pop_wadai_sns.png")
 	if err != nil {
 		log.Println(err)
 		w.WriteHeader(http.StatusInternalServerError)
