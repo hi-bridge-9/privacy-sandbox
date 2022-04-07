@@ -2,6 +2,7 @@ package ad_tech
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 	"strings"
 
@@ -15,6 +16,7 @@ var (
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
+	log.Printf("user-agent: %v", r.Header["User-Agent"])
 	at := ad_tech.New(w)
 	if r.Method != "GET" {
 		at.Response(http.StatusMethodNotAllowed, nil, nil)
@@ -36,7 +38,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	imgTag := fmt.Sprintf(baseImagTag, "./ad_tech/image", 450, 450)
-	adTag := fmt.Sprintf(baseAdTag, "https://www.apple.com/jp/", imgTag)
+	adTag := fmt.Sprintf(baseAdTag, "http://abehiroshi.la.coocan.jp/", imgTag)
 	resp, err := at.ConvertToJSON(baseResp, adTag)
 	if err != nil {
 		at.Response(http.StatusInternalServerError, nil, nil)

@@ -39,6 +39,13 @@ var topPage = `
 				error => console.log(error)
 			);
     </script>
+
+	<p id="user-agent">
+    </p>
+	<script>
+		var userAgentResult = navigator.userAgent;
+		document.getElementById("user-agent").innerHTML = userAgentResult;
+	</script>
 </body>
 </html>
 `
@@ -52,7 +59,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	headers := map[string]string{
 		"Content-Type": "text/html",
-		"Accept-CH":    "Sec-CH-UA-Reduced", // for User Agent Reduction
+		"Accept-CH":    "Sec-CH-UA-Reduced", // for User Agent Reduction Origin Trials
 	}
 
 	m.Response(http.StatusOK, headers, []byte(topPage))
