@@ -9,7 +9,7 @@ import (
 )
 
 var (
-	baseAdTag   = `<a href=%s id=%s>%s</a>`
+	baseAdTag   = `<a href=%s>%s</a>`
 	baseImagTag = `<img src=%s width=%d height=%d>`
 	baseResp    = `{"ads": "%s"}`
 )
@@ -35,7 +35,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	imgTag := fmt.Sprintf(baseImagTag, "./image", 450, 450)
+	imgTag := fmt.Sprintf(baseImagTag, "./ad_tech/image", 450, 450)
 	adTag := fmt.Sprintf(baseAdTag, "https://www.apple.com/jp/", imgTag)
 	resp, err := at.ConvertToJSON(baseResp, adTag)
 	if err != nil {
