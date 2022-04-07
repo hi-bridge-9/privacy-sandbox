@@ -1,17 +1,11 @@
 package ad_tech
 
 import (
-	"bytes"
-	"errors"
 	"fmt"
-	"image/jpeg"
-	"image/png"
-	"log"
 	"net/http"
-	"os"
 	"strings"
 
-	"github.com/google/uuid"
+	"github.com/hi-bridge-9/privacy-sandbox/lib/ad_tech"
 )
 
 var (
@@ -21,55 +15,37 @@ var (
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
+	at := ad_tech.New(w)
 	if r.Method != "GET" {
-		log.Printf("Invalid request method: %v\n", r.Method)
-		w.WriteHeader(http.StatusMethodNotAllowed)
+		at.Response(http.StatusMethodNotAllowed, nil, nil)
 		return
 	}
 
-	if len(strings.Split(r.Host, "/")) < 1 {
-		img, err := readFile("./ad_tech/image/pop_wadai_sns.png")
+	path := strings.Split(r.URL.Path, "/")
+	if path[2] == "image" {
+		img, err := at.ReadAdImage("./ad_tech/image/pop_wadai_sns.png")
 		if err != nil {
-			log.Println(err)
-			w.WriteHeader(http.StatusInternalServerError)
+			at.Response(http.StatusInternalServerError, nil, nil)
 		}
 
-		w.Header().Add("Content-Type", "image/png")
-		w.WriteHeader(http.StatusOK)
-		w.Write(img)
+		headers := map[string]string{
+			"Content-Type": "image/png",
+		}
+		at.Response(http.StatusOK, headers, img)
 		return
 	}
 
-	resp := makeResp()
-	w.Header().Add("Content-Type", "text/html")
-	w.WriteHeader(http.StatusOK)
-	w.Write([]byte(resp))
-}
-
-func makeResp() string {
-	id, _ := uuid.NewRandom()
-	return fmt.Sprintf(baseResp, genAds(id.String()))
-}
-
-func genAds(id string) string {
 	imgTag := fmt.Sprintf(baseImagTag, "./image", 450, 450)
-	return fmt.Sprintf(baseAdTag, "https://www.apple.com/jp/", id, imgTag)
-}
-
-func readFile(fp string) ([]byte, error) {
-	file, err := os.Open(fp)
+	adTag := fmt.Sprintf(baseAdTag, "https://www.apple.com/jp/", imgTag)
+	resp, err := at.ConvertToJSON(baseResp, adTag)
 	if err != nil {
-		return nil, fmt.Errorf("invalid file path: %w", err)
+		at.Response(http.StatusInternalServerError, nil, nil)
+		return
 	}
 
-	img, err := png.Decode(file)
-	if err != nil {
-		return nil, fmt.Errorf("failed decode file data: %v", err)
+	headers := map[string]string{
+		"Content-Type": "application/json",
 	}
 
-	buff := new(bytes.Buffer)
-	if err := jpeg.Encode(buff, img, nil); err != nil {
-		return nil, errors.New("unable to encode image")
-	}
-	return buff.Bytes(), nil
+	at.Response(http.StatusOK, headers, resp)
 }

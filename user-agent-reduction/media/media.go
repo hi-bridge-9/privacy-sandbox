@@ -1,8 +1,9 @@
 package media
 
 import (
-	"log"
 	"net/http"
+
+	"github.com/hi-bridge-9/privacy-sandbox/lib/media"
 )
 
 var topPage = `
@@ -18,10 +19,7 @@ var topPage = `
     <div id="ad">
     </div>
     <script>
-		const adtechDomain = 'localhost'
-		const adtechOrigin = 'http://' + adtechDomain
-		const adtechURL = adtechOrigin + '/ad_tech'
-
+		const adtechURL = 'http://localhost/ad_tech'
 		fetch(adtechURL)
 			.then(
 				response => response.json()
@@ -46,15 +44,16 @@ var topPage = `
 `
 
 func Handler(w http.ResponseWriter, r *http.Request) {
+	m := media.New(w)
 	if r.Method != "GET" {
-		log.Printf("Invalid request method: %v\n", r.Method)
-		w.WriteHeader(http.StatusMethodNotAllowed)
+		m.Response(http.StatusMethodNotAllowed, nil, nil)
 		return
 	}
 
-	w.Header().Add("Content-Type", "text/html")
-	w.Header().Add("Accept-CH", "Sec-CH-UA-Reduced")   // for User Agent Reduction
-	w.Header().Add("Critical-CH", "Sec-CH-UA-Reduced") // for User Agent Reduction
-	w.WriteHeader(http.StatusOK)
-	w.Write([]byte(topPage))
+	headers := map[string]string{
+		"Content-Type": "text/html",
+		"Accept-CH":    "Sec-CH-UA-Reduced", // for User Agent Reduction
+	}
+
+	m.Response(http.StatusOK, headers, []byte(topPage))
 }

@@ -12,7 +12,7 @@ import (
 var (
 	handlerFuncMap = map[string]func(w http.ResponseWriter, r *http.Request){
 		"/media":   media.Handler,
-		"/ad_tech": ad_tech.Handler,
+		"/ad_tech/": ad_tech.Handler,
 	}
 )
 
