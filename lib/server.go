@@ -1,4 +1,4 @@
-package util
+package server
 
 import (
 	"log"
@@ -9,7 +9,7 @@ type Server struct {
 	path map[string]func(http.ResponseWriter, *http.Request)
 }
 
-func NewWebServer(path map[string]func(http.ResponseWriter, *http.Request)) *Server {
+func New(path map[string]func(http.ResponseWriter, *http.Request)) *Server {
 	return &Server{
 		path: path,
 	}
