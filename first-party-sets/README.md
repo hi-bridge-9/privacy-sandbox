@@ -84,10 +84,9 @@ NGパターン
 ```
 
 参考：https://github.com/privacycg/first-party-sets#sameparty-cookies-and-first-party-sets
-　　　https://developer.chrome.com/blog/first-party-sets-sameparty/#how-do-you-get-involved
 
 ## 試験的利用手順
-### 方法1: Chromeのフラグ機能を利用（GUI）
+### 方法1：Chromeのフラグ機能を利用（GUI）
 #### ブラウザから
 1. Chromeの検索バーから`chrome://flags/#use-first-party-set`を開き、ステータスを「Disabled」 → 「Enabled」に変更する
 2. 空欄に宣言したいドメイン群をオリジン形式で以下のようにカンマ区切りで入力する
@@ -121,7 +120,7 @@ NGパターン
 参考：https://www.chromium.org/updates/first-party-sets/
 
 
-### 方法2: Origin Trialsに登録し、トークンを使用する
+### 方法2：Origin Trialsに登録し、トークンを使用する
 1. Origin Trialsの[登録ページ](https://developer.chrome.com/origintrials/#/view_trial/988540118207823873)から、宣言したいドメイン毎にトークンを取得する（ドメインの数が3つなら、3回登録を行う）
 2. ドメインを割り当てるサイトのHTMLやAPIのレスポンスヘッダーにトークンを設定する
     ```html
