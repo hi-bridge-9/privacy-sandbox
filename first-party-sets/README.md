@@ -148,43 +148,43 @@ NGパターン
 ## 参考資料
 ### 概要
 - **First-Party Sets**
-https://developer.chrome.com/ja/docs/privacy-sandbox/first-party-sets/
+  - https://developer.chrome.com/ja/docs/privacy-sandbox/first-party-sets/
 
 - **First-Party Sets and the SameParty attribute**
-https://developer.chrome.com/blog/first-party-sets-sameparty/
+  - https://developer.chrome.com/blog/first-party-sets-sameparty/
 
 
 ### 詳細
 - **First-Party Sets Proposal**
-https://github.com/privacycg/first-party-sets
+  - https://github.com/privacycg/first-party-sets
 
 - **First-Party Sets**
-https://www.chromium.org/updates/first-party-sets/
+  - https://www.chromium.org/updates/first-party-sets/
 
 
 - **SameParty Cookies and First-Party Sets**
-https://github.com/privacycg/first-party-sets#sameparty-cookies-and-first-party-sets
+  - https://github.com/privacycg/first-party-sets#sameparty-cookies-and-first-party-sets
 
 - **SameParty cookie attribute explainer**
-https://github.com/cfredric/sameparty
+  - https://github.com/cfredric/sameparty
 
 - **First-Party Sets & SameParty Prototype Design Doc**
-https://docs.google.com/document/d/16m5IfppdmmL-Zwk9zW8tJD4iHTVGJOLRP7g-QwBwX5c/edit
+  - https://docs.google.com/document/d/16m5IfppdmmL-Zwk9zW8tJD4iHTVGJOLRP7g-QwBwX5c/edit
 
 
 
 ### オリジントライアル登録ページ
 - **Trial for First Party Sets & SameParty**
-https://developer.chrome.com/origintrials/#/view_trial/988540118207823873
+  - https://developer.chrome.com/origintrials/#/view_trial/988540118207823873
 
 ### 問い合わせ先
 - **Intent to Prototype**
-https://groups.google.com/u/1/a/chromium.org/g/blink-dev/c/XkWbQKrBzMg
+  - https://groups.google.com/u/1/a/chromium.org/g/blink-dev/c/XkWbQKrBzMg
 
 
 ### デモサイト
 - **First-Party Sets - Demo Site**
-https://fps-member1.glitch.me/
+  - https://fps-member1.glitch.me/
 
 
 ### コード
