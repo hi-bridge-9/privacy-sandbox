@@ -5,6 +5,7 @@
 
  →⑤のリクエストヘッダーにCookieが含まれない
 ```mermaid
+%%{init:{'theme':'default'}}%%
 sequenceDiagram
 
     participant A as ブラウザ
@@ -29,7 +30,7 @@ sequenceDiagram
 
 →⑤のリクエストヘッダーにCookieが含まれる
 ```mermaid
-%%{init:{'theme':'base'}}%%
+%%{init:{'theme':'default'}}%%
 sequenceDiagram
 
     participant A as ブラウザ
