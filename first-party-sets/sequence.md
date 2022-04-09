@@ -5,7 +5,6 @@
 
  →⑤のリクエストヘッダーにCookieが含まれない
 ```mermaid
-%%{init:{'theme':'default'}}%%
 sequenceDiagram
 
     participant A as ブラウザ
@@ -13,15 +12,15 @@ sequenceDiagram
     participant C as 埋め込みコンテンツ（b.example）
 
     Note over A, C: Cookie設定用タグ発火
-    A->>C: ①HTTPリクエスト
-    C-->>A: ②HTTPレスポンス（Cookie設定）
+    A->>C: HTTPリクエスト
+    C-->>A: HTTPレスポンス（Cookie設定）
     Note left of C: Set-Cookie: id=123（Secure、SameSite=Lax）
 
     Note over A, C: サブリソースからCookieの操作
-    A->>B: ③HTTPリクエスト
-    B-->>A: ④HTTPレスポンス（HTMLファイル返却）
-    A->>C: ⑤HTTPリクエスト（Cookieなし）
-    C-->>A: ⑥HTTPレスポンス（コンテンツ返却）
+    A->>B: HTTPリクエスト
+    B-->>A: HTTPレスポンス（HTMLファイル返却）
+    A->>C: HTTPリクエスト（Cookieなし）
+    C-->>A: HTTPレスポンス（コンテンツ返却）
 ```
 
 
@@ -30,22 +29,22 @@ sequenceDiagram
 
 →⑤のリクエストヘッダーにCookieが含まれる
 ```mermaid
-%%{init:{'theme':'default'}}%%
 sequenceDiagram
+    autonumber
 
     participant A as ブラウザ
     participant B as Webサイト（a.example）
     participant C as 埋め込みコンテンツ（b.example）
 
     Note over A, C: Cookie設定用タグ発火
-    A->>C: ①HTTPリクエスト
-    C-->>A: ②HTTPレスポンス（Cookie設定）
+    A->>C: HTTPリクエスト
+    C-->>A: HTTPレスポンス（Cookie設定）
     Note left of C: Set-Cookie: id=123（Secure、SameSite=Lax、 SameParty）
 
     Note over A, C: サブリソースからCookieの操作
-    A->>B: ③HTTPリクエスト
-    B-->>A: ④HTTPレスポンス（HTMLファイル返却）
-    A->>C: ⑤HTTPリクエスト（Cookieあり）
+    A->>B: HTTPリクエスト
+    B-->>A: HTTPレスポンス（HTMLファイル返却）
+    A->>C: HTTPリクエスト（Cookieあり）
     Note left of C: Cookie: id=123
-    C-->>A: ⑥HTTPレスポンス（コンテンツ返却）
+    C-->>A: HTTPレスポンス（コンテンツ返却）
 ```
