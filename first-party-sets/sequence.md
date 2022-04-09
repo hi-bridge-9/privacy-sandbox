@@ -1,11 +1,12 @@
 # First-Party Sets＆SameParty属性の活用例（Cookie設定要求〜埋め込みコンテンツ返却）
 
 ## 通常の場合
-#### 3rd Party Cookieが規制されている状態において、b.exampleはサードパーティコンテキストにあたるため、Cookieにアクセスすることができない。
+3rd Party Cookieが規制されている状態において、b.exampleはサードパーティコンテキストにあたるため、Cookieにアクセスすることができない。
 
- →⑤のリクエストヘッダーにCookieが含まれない
+#### →⑤のリクエストヘッダーにCookieが含まれない
 ```mermaid
 sequenceDiagram
+    autonumber
 
     participant A as ブラウザ
     participant B as Webサイト（a.example）
@@ -25,9 +26,9 @@ sequenceDiagram
 
 
 ## 機能適応後の場合
-#### First-Party Setsの宣言とSameParty属性によって、b.exampleはファーストコンテキストという扱いになり、Cookieにアクセスすることができる。
+First-Party Setsの宣言とSameParty属性によって、b.exampleはファーストコンテキストという扱いになり、Cookieにアクセスすることができる。
 
-→⑤のリクエストヘッダーにCookieが含まれる
+#### →⑤のリクエストヘッダーにCookieが含まれる
 ```mermaid
 sequenceDiagram
     autonumber
